@@ -1,0 +1,99 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Gestão de Pessoas</ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="frmPessoa">
+            <p:growl id="mensagens" showDetail="true" />
+
+            <p:panel header="Lista de Pessoas" style="margin-bottom:20px">
+                <p:commandButton value="Nova Pessoa" icon="pi pi-plus"
+                                 actionListener="#{pessoaController.prepararNovaPessoa}"
+                                 update=":dlgCadastroForm :dlgCadastro"
+                                 oncomplete="PF('dlgCadastro').show()"
+                                 styleClass="p-button-rounded p-button-success" />
+
+                <p:dataTable id="tabela" value="#{pessoaController.pessoaList}" var="p"
+                             selection="#{pessoaController.selected}" selectionMode="single"
+                             rowKey="#{p.id}" paginator="true" rows="5">
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{p.id}" />
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{p.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Email">
+                        <h:outputText value="#{p.email}" />
+
+                        <!-- Se for o usuário logado, mostra bolinha verde -->
+                        <h:panelGroup rendered="#{p.email eq loginController.usuarioLogado.email}" layout="inline" style="margin-left:5px;">
+                            <i class="pi pi-circle-on" style="color:green; font-size:0.8rem;" title="Online" />
+                        </h:panelGroup>
+                    </p:column>
+
+                    <p:column headerText="Tipo de Usuário">
+                        <h:outputText value="#{p.tipoUsuario}" />
+                    </p:column>
+
+                    <p:column headerText="Ações" style="width:200px">
+                        <p:commandButton icon="pi pi-pencil" title="Editar"
+                                         styleClass="rounded-button ui-button-info"
+                                         update=":dlgCadastro :dlgCadastroForm"
+                                         actionListener="#{pessoaController.setPessoa(p)}"
+                                         oncomplete="PF('dlgCadastro').show()" />
+
+
+                        <p:commandButton icon="pi pi-trash" title="Excluir" 
+                                         styleClass="rounded-button ui-button-danger"
+                                         update=":frmPessoa:tabela :frmPessoa:mensagens"
+                                         actionListener="#{pessoaController.setSelected(p)}"
+                                         onclick="return confirm('Tem certeza que deseja excluir esta pessoa?');"
+                                         action="#{pessoaController.deletarPessoa}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+        <!-- Diálogo de Cadastro -->
+        <p:dialog id="dlgCadastro" header="Cadastro de Pessoa" widgetVar="dlgCadastro" modal="true" resizable="false" >
+            <h:form id="dlgCadastroForm">
+                <p:panelGrid columns="2" columnClasses="label,value" styleClass="ui-panelgrid-blank" style="width: 100%; table-layout: fixed;">
+                    <p:outputLabel for="nome" value="Nome:" />
+                    <p:inputText id="nome" value="#{pessoaController.pessoa.nome}" required="true" />
+
+                    <p:outputLabel for="email" value="Email:" />
+                    <p:inputText id="email" value="#{pessoaController.pessoa.email}" required="true" />
+
+                    <p:outputLabel for="senha" value="Senha:" />
+                    <p:password id="senha" value="#{pessoaController.pessoa.senha}" required="true" />
+
+                    <p:outputLabel for="tipo" value="Tipo Usuário:" />
+                    <p:selectOneMenu id="tipo" value="#{pessoaController.pessoa.tipoUsuario}" required="true">
+                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+                        <f:selectItem itemLabel="Gerente" itemValue="GERENTE" />
+                        <f:selectItem itemLabel="Estoquista" itemValue="ESTOQUISTA" />
+                    </p:selectOneMenu>
+                </p:panelGrid>
+
+                <p:separator />
+
+                <p:commandButton value="Salvar" icon="pi pi-save"
+                                 actionListener="#{pessoaController.adicionarPessoa}"
+                                 update=":frmPessoa:tabela :frmPessoa:mensagens"
+                                 oncomplete="PF('dlgCadastro').hide()" />                
+            </h:form>
+        </p:dialog>
+
+
+                         
+    </ui:define>
+</ui:composition>

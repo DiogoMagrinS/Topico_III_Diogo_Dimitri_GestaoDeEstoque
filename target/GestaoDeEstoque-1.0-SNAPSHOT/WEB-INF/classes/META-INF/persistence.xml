@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence">
+  <persistence-unit name="GestaoEstoque" transaction-type="JTA">
+    <jta-data-source>java:app/JNDI_DBGESTAOESTOQUE</jta-data-source>
+    <properties>
+      <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

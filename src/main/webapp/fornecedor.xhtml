@@ -1,0 +1,69 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Gestão de Fornecedores</ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="frmFornecedor">
+            <p:growl id="mensagens" showDetail="true" />
+
+            <p:panel header="Lista de Fornecedores" style="margin-bottom:20px">
+                <p:commandButton value="Novo Fornecedor" icon="pi pi-plus"
+                                 actionListener="#{fornecedorController.prepararNovoFornecedor}"
+                                 update=":dlgCadastroForm :dlgCadastro"
+                                 oncomplete="PF('dlgCadastro').show()"
+                                 styleClass="p-button-rounded p-button-success" />
+
+                <p:dataTable id="tabela" value="#{fornecedorController.fornecedorList}" var="f"
+                             selection="#{fornecedorController.selected}" selectionMode="single"
+                             rowKey="#{f.id}" paginator="true" rows="5">
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{f.id}" />
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{f.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Ações">
+                        <p:commandButton icon="pi pi-pencil" title="Editar"
+                                         actionListener="#{fornecedorController.setFornecedor(f)}"
+                                         update=":dlgCadastroForm"
+                                         oncomplete="PF('dlgCadastro').show()"
+                                         styleClass="p-button-rounded p-button-warning" />
+
+                        <p:commandButton icon="pi pi-trash" title="Excluir"
+                                         action="#{fornecedorController.deletarFornecedor}"
+                                         actionListener="#{fornecedorController.setSelected(f)}"
+                                         update=":frmFornecedor:tabela :frmFornecedor:mensagens"
+                                         styleClass="p-button-rounded p-button-danger" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+        <!-- Dialog de Cadastro -->
+        <p:dialog id="dlgCadastro" header="Cadastro de Fornecedor" widgetVar="dlgCadastro" modal="true" resizable="false">
+            <h:form id="dlgCadastroForm">
+                <p:panelGrid columns="2" style="width:100%">
+                    <p:outputLabel for="nome" value="Nome:" />
+                    <p:inputText id="nome" value="#{fornecedorController.fornecedor.nome}" required="true" />
+                </p:panelGrid>
+
+                <p:separator />
+
+                <p:commandButton value="Salvar" icon="pi pi-save"
+                                 actionListener="#{fornecedorController.adicionarFornecedor}"
+                                 update=":frmFornecedor:tabela :frmFornecedor:mensagens"
+                                 oncomplete="PF('dlgCadastro').hide()" />
+            </h:form>
+        </p:dialog>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,16 @@
+com/mycompany/gestaoestoque/facade/ProdutoFacade.class
+com/mycompany/gestaoestoque/controller/EstoqueController.class
+com/mycompany/gestaoestoque/entity/ProdutoEntity.class
+com/mycompany/gestaoestoque/controller/FornecedorController.class
+com/mycompany/gestaoestoque/controller/ProdutoController.class
+com/mycompany/gestaoestoque/controller/MovimentacaoController.class
+com/mycompany/gestaoestoque/facade/AbstractFacade.class
+com/mycompany/gestaoestoque/controller/LoginController.class
+com/mycompany/gestaoestoque/facade/PessoaFacade.class
+com/mycompany/gestaoestoque/facade/FornecedorFacade.class
+com/mycompany/gestaoestoque/entity/FornecedorEntity.class
+com/mycompany/gestaoestoque/facade/MovimentacaoFacade.class
+com/mycompany/gestaoestoque/controller/PessoaController.class
+com/mycompany/gestaoestoque/entity/MovimentacaoEntity.class
+com/mycompany/gestaoestoque/entity/PessoaEntity.class
+com/mycompany/gestaoestoque/JakartaRestConfiguration.class

@@ -1,0 +1,16 @@
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/ProdutoController.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/entity/ProdutoEntity.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/entity/MovimentacaoEntity.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/FornecedorController.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/EstoqueController.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/FornecedorFacade.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/JakartaRestConfiguration.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/PessoaController.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/entity/PessoaEntity.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/ProdutoFacade.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/LoginController.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/PessoaFacade.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/MovimentacaoFacade.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/entity/FornecedorEntity.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/MovimentacaoController.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/AbstractFacade.java
