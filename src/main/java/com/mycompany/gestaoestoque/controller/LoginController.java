@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.gestaoestoque.controller;
 
 import com.mycompany.gestaoestoque.entity.PessoaEntity;
@@ -29,13 +25,11 @@ public class LoginController implements Serializable {
         for (PessoaEntity p : pessoaFacade.listarTodos()) {
             if (p.getEmail().equalsIgnoreCase(email) && p.getSenha().equals(senha)) {
                 usuarioLogado = p;
-
-                // Redireciona conforme o tipo
                 try {
                     if ("GERENTE".equalsIgnoreCase(p.getTipoUsuario())) {
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("pessoa.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("admin/pessoa.xhtml");
                     } else {
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("recebimento.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("/pessoamovimentacoes.xhtml");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -48,37 +42,18 @@ public class LoginController implements Serializable {
                 new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Email ou senha inválidos"));
     }
 
-    public void logout() {
+    public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return "/login.xhtml?faces-redirect=true";
     }
 
-    // Getters e setters
-    public String getEmail() {
-        return email;
-    }
+    // Getters e Setters
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public PessoaEntity getUsuarioLogado() {
-        return usuarioLogado;
-    }
-
-    public void setUsuarioLogado(PessoaEntity usuarioLogado) {
-        this.usuarioLogado = usuarioLogado;
-    }
+    public PessoaEntity getUsuarioLogado() { return usuarioLogado; }
+    public void setUsuarioLogado(PessoaEntity usuarioLogado) { this.usuarioLogado = usuarioLogado; }
 }

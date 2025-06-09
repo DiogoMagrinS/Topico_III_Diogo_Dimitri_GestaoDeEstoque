@@ -12,5 +12,6 @@ com/mycompany/gestaoestoque/entity/FornecedorEntity.class
 com/mycompany/gestaoestoque/facade/MovimentacaoFacade.class
 com/mycompany/gestaoestoque/controller/PessoaController.class
 com/mycompany/gestaoestoque/entity/MovimentacaoEntity.class
+com/mycompany/gestaoestoque/FiltroAdministrativo.class
 com/mycompany/gestaoestoque/entity/PessoaEntity.class
 com/mycompany/gestaoestoque/JakartaRestConfiguration.class

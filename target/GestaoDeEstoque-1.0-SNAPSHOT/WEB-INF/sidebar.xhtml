@@ -16,11 +16,13 @@
         <div class="layout-menu-container">
             <h:form id="menuform">
                 <pm:menu widgetVar="ManhattanMenuWidget">
-                    <p:menuitem id="mnuPessoa" value="Pessoa" icon="pi pi-fw pi-users" outcome="pessoa.xhtml"/>
-                    <p:menuitem id="mnuFornecedor" value="Fornecedores" icon="pi pi-fw pi-briefcase" outcome="fornecedor.xhtml"/>
-                    <p:menuitem id="mnuProduto" value="Produto" icon="pi pi-fw pi-box" outcome="produto.xhtml"/>
-                    <p:menuitem id="mnuMovimentacoes" value="Movimentações" icon="pi pi-fw pi-refresh" outcome="movimentacoes.xhtml" />
-                    <p:menuitem id="mnuEstoque" value="Estoque" icon="pi pi-fw pi-chart-bar" outcome="estoque.xhtml"/>
+                    <p:menuitem id="mnuPessoa" value="Pessoa" icon="pi pi-fw pi-users" outcome="/admin/pessoa.xhtml"/>
+                    <p:menuitem id="mnuFornecedor" value="Fornecedores" icon="pi pi-fw pi-briefcase" outcome="/admin/fornecedor.xhtml"/>
+                    <p:menuitem id="mnuProduto" value="Produto" icon="pi pi-fw pi-box" outcome="/admin/produto.xhtml"/>
+                    <p:menuitem id="mnuMovimentacoes" value="Movimentações" icon="pi pi-fw pi-refresh" outcome="/admin/movimentacoes.xhtml" />
+                    <p:menuitem id="mnuEstoque" value="Estoque" icon="pi pi-fw pi-chart-bar" outcome="/admin/estoque.xhtml"/>
+                    <p:menuitem value="Sair" icon="pi pi-sign-out" action="#{loginController.logout}" ajax="false"/>
+
                 </pm:menu>
             </h:form>
         </div>

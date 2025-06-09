@@ -11,6 +11,7 @@
 /home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/LoginController.java
 /home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/PessoaFacade.java
 /home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/MovimentacaoFacade.java
+/home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/FiltroAdministrativo.java
 /home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/entity/FornecedorEntity.java
 /home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/controller/MovimentacaoController.java
 /home/diogo/Downloads/GestaoDeEstoque (2)/GestaoDeEstoqueeeeeeeeeeeeeeee/src/main/java/com/mycompany/gestaoestoque/facade/AbstractFacade.java

@@ -1,0 +1,105 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Movimentações de Estoque</ui:define>
+
+    <ui:define name="content">
+        <h:form id="frmMovimentacao">
+            <p:growl id="mensagens" showDetail="true" />
+
+            <p:panel header="Histórico de Movimentações" style="margin-bottom:20px">
+
+                <p:commandButton value="Nova Entrada" icon="pi pi-arrow-down"
+                                 actionListener="#{movimentacaoController.prepararNova('ENTRADA')}"
+                                 update=":dlgForm :dlg"
+                                 oncomplete="PF('dlg').show()"
+                                 styleClass="p-button-success p-button-rounded"/>
+
+                <p:commandButton value="Nova Saída" icon="pi pi-arrow-up"
+                                 actionListener="#{movimentacaoController.prepararNova('SAIDA')}"
+                                 update=":dlgForm :dlg"
+                                 oncomplete="PF('dlg').show()"
+                                 styleClass="p-button-warning p-button-rounded"/>
+                <p:panel header="Filtrar por Período" style="margin: 20px 0">
+    <p:panelGrid columns="4" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3,ui-grid-col-3">
+
+        <p:calendar id="dataInicio" value="#{movimentacaoController.dataInicio}" 
+                    pattern="yyyy-MM-dd" showButtonPanel="true"
+                    placeholder="Data Início" />
+
+        <p:calendar id="dataFim" value="#{movimentacaoController.dataFim}" 
+                    pattern="yyyy-MM-dd" showButtonPanel="true"
+                    placeholder="Data Fim" />
+
+        <p:commandButton value="Filtrar" icon="pi pi-filter"
+                         action="#{movimentacaoController.filtrarPorData}"
+                         update="frmMovimentacao:tabela frmMovimentacao:mensagens"
+                         styleClass="p-button-info" />
+
+        <p:commandButton value="Limpar Filtro" icon="pi pi-times"
+                 action="#{movimentacaoController.limparFiltro}"
+                 update="frmMovimentacao:tabela frmMovimentacao:mensagens dataInicio dataFim"
+                 process="@this"
+                 styleClass="p-button-secondary" />
+
+    </p:panelGrid>
+</p:panel>
+
+
+
+                
+                <p:dataTable id="tabela" value="#{movimentacaoController.movimentacoes}" var="m"
+                             paginator="true" rows="7" styleClass="mt-3">
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{m.id}" />
+                    </p:column>
+
+                    <p:column headerText="Produto">
+                        <h:outputText value="#{m.produto.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Quantidade">
+                        <h:outputText value="#{m.quantidade}" />
+                    </p:column>
+
+                    <p:column headerText="Tipo">
+                        <h:outputText value="#{m.tipo}" />
+                    </p:column>
+
+                    <p:column headerText="Data">
+                        <h:outputText value="#{m.dataMovimentacao}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+        <p:dialog id="dlg" widgetVar="dlg" header="Nova Movimentação" modal="true" resizable="false">
+            <h:form id="dlgForm">
+                <p:panelGrid columns="2" style="width:100%" columnClasses="label,value">
+
+                    <p:outputLabel value="Produto:" />
+                    <p:selectOneMenu value="#{movimentacaoController.produtoIdSelecionado}" required="true">
+                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{movimentacaoController.produtos}" var="p"
+                                       itemValue="#{p.id}" itemLabel="#{p.nome}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Quantidade:" />
+                    <p:inputText value="#{movimentacaoController.movimentacao.quantidade}" required="true"/>
+                </p:panelGrid>
+
+                <p:separator/>
+                <p:commandButton value="Salvar" icon="pi pi-save"
+                 action="#{movimentacaoController.salvarMovimentacao}"
+                 update="frmMovimentacao:tabela frmMovimentacao:mensagens"
+                 oncomplete="PF('dlg').hide()" />
+            </h:form>
+        </p:dialog>
+        
+    </ui:define>
+</ui:composition>
