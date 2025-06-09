@@ -1,0 +1,10 @@
+19 maio - 25 maio
+implementado login do gerente e do estoquista, crud fornecedor,
+próxima semana: CRUD de produtos, movimentações
+
+26 maio - 1 junho
+implementado CRUD de produtos, movimentações
+próxima semana: tela de estoque, filtros por data
+
+2 junho - 8 junho
+implementado tela de estoque, filtros por data
